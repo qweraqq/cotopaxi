@@ -621,7 +621,8 @@ class CotopaxiTester(object):
                 for dest_port in self.list_ports:
                     self.test_params.dst_endpoint.ip_addr = dest_ip
                     self.test_params.dst_endpoint.port = dest_port
-                    self.test_params.set_ip_version()
+                    # self.test_params.set_ip_version()
+                    self.ip_version = 4
                     if test_cases:
                         test_function(self.test_params, test_cases)
                     else:
@@ -680,10 +681,14 @@ def prepare_ips(ips_input):
                 e.g.: ['1.1.1.1', '2.2.2.2', '2.2.2.3'] for the above example.
     """
     try:
+        # test_ips = [
+        #     ip_addr
+        #     for address_desc in ips_input.split(",")
+        #     for ip_addr in IPY_IP(address_desc, make_net=1)
+        # ]
         test_ips = [
             ip_addr
-            for address_desc in ips_input.split(",")
-            for ip_addr in IPY_IP(address_desc, make_net=1)
+            for ip_addr in ips_input.split(",")
         ]
     except ValueError as value_error:
         exit("Cannot parse IP address: {}".format(value_error))
