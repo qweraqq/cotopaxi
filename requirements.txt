@@ -6,3 +6,5 @@ IPy>=0.83
 psutil>=3.4.2
 PyYAML>=3.12
 scapy-ssl-tls==2.0.0
+
+scapy>=2.4.1 # not directly required, pinned by Snyk to avoid a vulnerability
